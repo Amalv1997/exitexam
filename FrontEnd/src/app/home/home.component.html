@@ -1,0 +1,14 @@
+<div class="d-flex justify-content-center align-item-center">
+    <div class="forms">
+        <form #form="ngForm" (ngSubmit)="form.valid&&getotp()">
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">Email address</label>
+              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" #email="ngModel" name="email" pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" [(ngModel)]="users.email" required>
+              <small class="text-danger" *ngIf="form.submitted&&email.errors?.['required']">*Email required</small>
+              <small class="text-danger" *ngIf="form.submitted&&email.errors?.['pattern']">*Invalid Email</small>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+    </div>
+</div>
