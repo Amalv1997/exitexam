@@ -1,12 +1,22 @@
-<div class="d-flex justify-content-center align-item-center">
-    <div>
-        <form>
-            <div class="mb-3">
-              <label for="exampleInputEmail1" class="form-label">Enter OTP</label>
-              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-            </div>
+<div class="d-flex justify-content-center align-item-center home">
 
-            <button type="submit" class="btn btn-primary">Submit</button>
-          </form>
-    </div>
+  <div class="forms">
+      <form #form="ngForm" (ngSubmit)="form.valid&&loginuser()">
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">MAIL ID</label>
+            <input class="form-control" type="email" disabled required #email="ngModel" name="email" pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" [(ngModel)]="userdata.email" >
+           
+          </div>
+          <div class="mb-3">
+              <label for="otp" class="form-label">Enter OTP</label>
+              <input class="form-control" type="number"  required #otp="ngModel" maxlength="5" name="otp"  [(ngModel)]="userdata.otp" >
+              <small class="text-danger" *ngIf="form.submitted&&otp.errors?.['required']">*Enter OTP</small>
+
+            </div>
+          <div class="mt-4 text-center">
+              <button type="submit" class="btn btn-primary">Submit</button>
+          </div>
+        </form>
+  </div>
+
 </div>

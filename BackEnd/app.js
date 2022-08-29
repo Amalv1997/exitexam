@@ -27,19 +27,19 @@ app.post("/getotp" , (req,res)=>{
         otp:genotp
     }
     var user = new userdata(data)
-    user.save()
+    user.save();
 
     let mailTransporter = nodeMailer.createTransport({
         service: 'gmail',
         auth: {
-            user: '619amalv@gmail.com',
-            pass: 'yourpassword'
+            user: 'amalict22@gmail.com',
+            pass: 'otsvbzvenqwowfth'
         }
     });
       
 
     let mailDetails = {
-        from: '619amalv@gmail.com',
+        from: 'amalict22@gmail.com',
         to: user.email,
         subject: 'OTP Generated Successfully',
         text: genotp + `is your OTP. Do Not Disclose it to Anyone`
@@ -48,12 +48,12 @@ app.post("/getotp" , (req,res)=>{
     mailTransporter.sendMail(mailDetails, function(err, data) {
         if(err) {
             console.log(err);
-            res.send("Error")
+            res.send("")
 
         } else {
             console.log(mailDetails);
             console.log('Email sent successfully');
-            res.send("success")
+            res.send("")
         }
     });
     })
@@ -64,9 +64,9 @@ app.post("/getotp" , (req,res)=>{
         email=req.body.email;
         otp=req.body.otp;
 
-        userdata.find({otp:otp1})
+        userdata.findOne({"email":email , "otp":otp})
     .then((data)=>{
-        console.log(data)
+        console.log(data) 
         if(data===null){
             res.send({ status: false, data: 'Invalid OTP' })
         }else{

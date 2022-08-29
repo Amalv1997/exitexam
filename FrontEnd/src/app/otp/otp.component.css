@@ -1,0 +1,17 @@
+.home{
+    min-height: 91vh;
+    background-color: rgba(5, 203, 38, 0.197);
+}
+
+form{
+    border: 1px solid rgb(238, 14, 14);
+    padding: 40px;
+    border-radius: 25px;
+    width: 450px;
+    background-color: rgb(179, 233, 245);
+
+}
+.forms{
+    padding-top: 200px;
+   
+}

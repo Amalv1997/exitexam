@@ -17,7 +17,7 @@ export class HomeComponent implements OnInit {
   getotp(){
     this.user.getuser(this.users)
     localStorage.setItem('email' , this.users.email)
-    this.router.navigate(["/otp"])
+    this.router.navigate(['/otp'])
   }
 
   ngOnInit(): void {
